@@ -1,0 +1,67 @@
+Table: department
+-------------+---------------+------+-----+-------------------+---------
+ Field       | Type          | Null | Key | Default           | Remarks 
+-------------+---------------+------+-----+-------------------+---------
+ id          | INT(10)       | NO   | PRI |                   | 部门id    
+ name        | VARCHAR(100)  | NO   |     |                   | 部门名称    
+ leader      | VARCHAR(100)  | YES  |     |                   | 领导      
+ contacter   | VARCHAR(100)  | YES  |     |                   | 联系人     
+ address     | VARCHAR(200)  | YES  |     |                   | 地址      
+ telephone   | VARCHAR(100)  | YES  |     |                   | 电话      
+ fax         | VARCHAR(100)  | YES  |     |                   | 传真      
+ email       | VARCHAR(100)  | YES  |     |                   | 邮件      
+ note        | VARCHAR(100)  | YES  |     |                   | 备注      
+ create_time | TIMESTAMP(19) | NO   |     | CURRENT_TIMESTAMP | 创建时间    
+ inst_id     | INT(10)       | YES  |     |                   | 单位id    
+-------------+---------------+------+-----+-------------------+---------
+
+Table: institution
+-------------+------------------+------+-----+-------------------+---------
+ Field       | Type             | Null | Key | Default           | Remarks 
+-------------+------------------+------+-----+-------------------+---------
+ id          | INT UNSIGNED(10) | NO   | PRI |                   | 部门id    
+ name        | VARCHAR(100)     | YES  |     |                   | 单位名称    
+ leader      | VARCHAR(100)     | YES  |     |                   | 负责人     
+ contacter   | VARCHAR(100)     | YES  |     |                   | 联系人     
+ telephone   | VARCHAR(100)     | YES  |     |                   | 电话      
+ fax         | VARCHAR(100)     | YES  |     |                   | 传真      
+ address     | VARCHAR(200)     | YES  |     |                   | 地址      
+ zip_code    | VARCHAR(200)     | YES  |     |                   | 邮编      
+ email       | VARCHAR(100)     | YES  |     |                   | 电子邮件    
+ web         | VARCHAR(100)     | YES  |     |                   | 网站      
+ note        | VARCHAR(100)     | YES  |     |                   | 备注      
+ create_time | TIMESTAMP(19)    | YES  |     | CURRENT_TIMESTAMP | 创建时间    
+-------------+------------------+------+-----+-------------------+---------
+
+Table: permission
+---------+-------------+------+-----+---------+---------
+ Field   | Type        | Null | Key | Default | Remarks 
+---------+-------------+------+-----+---------+---------
+ id      | INT(10)     | NO   | PRI |         | 自增id    
+ frame   | TEXT(65535) | NO   |     |         | 权限      
+ dep_id  | INT(10)     | NO   |     |         | 部门id    
+ user_id | INT(10)     | NO   |     |         | 用户id，-1-部门权限
+ inst_id | INT(10)     | YES  |     |         | 单位id    
+---------+-------------+------+-----+---------+---------
+
+Table: user_info
+-------------+---------------+------+-----+-------------------+---------
+ Field       | Type          | Null | Key | Default           | Remarks 
+-------------+---------------+------+-----+-------------------+---------
+ id          | INT(10)       | NO   | PRI |                   | 用户id    
+ username    | VARCHAR(100)  | NO   |     |                   | 用户名     
+ password    | VARCHAR(100)  | NO   |     |                   | 用户密码    
+ dep_id      | INT(10)       | NO   |     |                   | 部门id    
+ sys_grade   | INT(10)       | NO   |     |                   | 级别：1-系统，2-单位，3-部门
+ real_name   | VARCHAR(100)  | YES  |     |                   | 真实姓名    
+ telephone   | VARCHAR(100)  | YES  |     |                   | 电话      
+ email       | VARCHAR(100)  | YES  |     |                   | 邮件      
+ note        | VARCHAR(100)  | YES  |     |                   | 备注      
+ deadline    | TIMESTAMP(19) | YES  |     |                   | 失效时间    
+ create_time | TIMESTAMP(19) | NO   |     | CURRENT_TIMESTAMP | 创建时间    
+ role        | INT(10)       | YES  |     |                   | 角色：1-管理员，2-审计员，3-业务用户
+ super_view  | INT(10)       | YES  |     |                   | 超级访问级别：0-关闭、2-单位、3-部门
+ inst_id     | INT(10)       | YES  |     |                   | 单位id，-1为系统级别
+ status      | INT(10)       | NO   |     | 1                 | 专题配置时间控制:0-不控制;1-控制
+-------------+---------------+------+-----+-------------------+---------
+
